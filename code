@@ -1,0 +1,50 @@
+import random
+import datetime
+
+print("🤖 Hello! I'm Jarvis - Your AI Assistant")
+print("Type 'bye' to exit\n")
+
+user_name = input("What's your name? ")
+print(f"Nice to meet you, {user_name}!\n")
+
+# Data
+jokes = [
+    "Why do programmers prefer dark mode? Because light attracts bugs!",
+    "Why did the Python developer go broke? Because he couldn't C!",
+    "What do you call a snake that works for the government? A civil serpent!"
+]
+
+def get_response(message):
+    msg = message.lower()
+
+    if "hello" in msg or "hi" in msg:
+        return f"Hello {user_name}! How can I help you?"
+    elif "how are you" in msg:
+        return "I'm doing great! Learning new things every day. How about you?"
+    elif "your name" in msg:
+        return "I'm Jarvis, built with Python by a BCA AI student."
+    elif "time" in msg:
+        return f"Current time is {datetime.datetime.now().strftime('%I:%M %p')}"
+    elif "date" in msg:
+        return f"Today is {datetime.datetime.now().strftime('%d %B %Y')}"
+    elif "joke" in msg:
+        return random.choice(jokes)
+    elif "python" in msg:
+        return "Python is my favourite language! It's simple, powerful, and perfect for AI."
+    elif "ai" in msg or "artificial" in msg:
+        return "AI is about making machines learn from data. I'm a small example of it!"
+    elif "bye" in msg:
+        return f"Bye {user_name}! Come back soon. 👋"
+    elif "thank" in msg:
+        return "You're welcome! Happy to help 😊"
+    elif "help" in msg:
+        return "You can ask me: time, date, joke, what is python, what is AI, or just chat!"
+    else:
+        return "Hmm interesting... Tell me more about that. Or type 'help' to see what I can do."
+
+while True:
+    user_input = input("You: ")
+    reply = get_response(user_input)
+    print(f"Jarvis: {reply}\n")
+    if "bye" in user_input.lower():
+        break
